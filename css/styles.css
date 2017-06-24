@@ -27,8 +27,8 @@ body {
 }
 
 .node input {
+	width: fill;
 	margin: 15px;
-	width: 90%;
 	height: 200px;
 }
 
@@ -46,7 +46,14 @@ body {
 	display: block;
 }
 
-.clearfix::after {
+.placeholder{
+	width: 90%;
+	height: 600px;
+	margin: auto;
+	background-color: black;
+}
+
+.clearFix::after {
     content: "";
     clear: both;
     display: table;

@@ -3,27 +3,28 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 	<div class = "container">
 		<div class = "columnLeft">
 			<div class = "node 1">
-				<div class = "move">
-					<button class = "moveNodeBefore">+</button>
-					<button class = "moveNodeAfter">+</button>
+				<div class = "move clearFix">
+					<button class = "moveNodeBefore">^</button>
+					<button class = "moveNodeAfter">v</button>
 				</div>
 				<div class = "inputs">
 					<input type="text">
 				</div>
-				<div class = "add">
+				<div class = "add clearFix">
 					<button class = "addNodeBefore">+</button>
 					<button class= "addNodeAfter">+</button>
 				</div>
 			</div>
 		</div>
 		<div class = "columnRight">
-			
+			<div class ="placeholder"></div>
 		</div>
 	</div>
 	<script src = "js/storyArray.js"></script>
