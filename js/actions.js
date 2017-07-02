@@ -1,30 +1,78 @@
 let nodeList = document.querySelector('.columnLeft');
+let previewButton = document.querySelector('.previewTTS');
 
-function newNode() {
+
+//Creates a new node and fills it with the correct html
+
+function insertNode(location, reference) {
 	var newNode = document.createElement('div');
-	var nodeList = document.querySelector('.columnLeft')
 	newNode.className = 'node';
-	nodeList.appendChild(newNode);
-	var newestNode = document.querySelector('.node:last-child');
-	newestNode.innerHTML = '<div class = "move"><button class = "moveNodeBefore">^</button><button class = "delete">X</button><button class = "moveNodeAfter">v</button></div><div class = "inputs"><h4>Content</h4><input type="text"></div><div class = "add"><button class = "addNodeBefore">+</button><button class= "addNodeAfter">+</button></div>';
+
+	if (location === 'before') {
+		nodeList.insertBefore(newNode, reference);
+	} else {
+		nodeList.insertBefore(newNode, reference.nextSibling);
+	}
+	
+	newNode.innerHTML = nodeFiller;
 };
 
-function deleteNode(node) {
-	var move = node.parentNode;
-	var thisNode = move.parentNode;
-	var nodeList = thisNode.parentNode;
-	nodeList.removeChild(thisNode);
+//deletes the 'node' of the button pressed
+
+function deleteNode(location) {
+	nodeList.removeChild(location);
 }
 
+// function moveNode(direction, reference) {
+
+// 	var thisNodeInput = reference.querySelector('textarea').value;
+// 	var thatNodeInput = '';
+
+// 	if (direction === 'up') {
+// 		thatNodeInput = reference.previousSibling.querySelector('textarea').value;
+// 	} else {
+// 		thatNodeInput = 
+// 	}
+// }
+
+function playTTS() {
+	var nodeArray = nodeList.querySelectorAll('.node');
+	var textToPlay = '';
+
+	for (var i = 0; i < nodeArray.length; i++){
+		var thisNodeInput = nodeArray[i].querySelector('textarea');
+		textToPlay += thisNodeInput.value + ' ';
+		console.log(textToPlay);
+	}
+
+	responsiveVoice.speak(textToPlay);
+}
+
+insertNode('before', document.querySelector('.addNodeEnd'));
+
+
+//Event Listeners
 
 nodeList.addEventListener('click', (event) => {
+	var buttonGroup = event.target.parentNode;
+	var thisNode = buttonGroup.parentNode;
+
 	if(event.target.className === 'addNodeAfter'){
-		newNode();
+		insertNode('after', thisNode);
 		console.log('after');
 	} else if (event.target.className === 'addNodeBefore'){
+		insertNode('before', thisNode);
+		console.log('before');
+	} else if (event.target.className === 'addNodeEnd'){
+		insertNode('before', event.target);
 		console.log('before');
 	} else if (event.target.className === 'delete'){
-		deleteNode(event.target);
+		deleteNode(thisNode);
 		console.log('delete');
-	}
+	}	
+});
+
+previewButton.addEventListener('click', () => {
+		console.log('playing that TTS');
+		playTTS();
 });

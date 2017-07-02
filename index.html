@@ -9,7 +9,7 @@
 <body>
 	<div class = "container">
 		<div class = "columnLeft">
-			<div class = "node">
+			<!-- <div class = "node">
 				<div class = "move">
 					<button class = "moveNodeBefore">^</button>
 					<button class = "delete">X</button>
@@ -17,19 +17,24 @@
 				</div>
 				<div class = "inputs">
 					<h4>Content</h4>
-					<input type="text">
+					<textarea name="message"></textarea>
 				</div>
 				<div class = "add">
 					<button class = "addNodeBefore">+</button>
 					<button class= "addNodeAfter">+</button>
 				</div>
-			</div>
+			</div> -->
+			<button class = "addNodeEnd">Add a node</button>
 		</div>
 		<div class = "columnRight">
 			<div class ="placeholder"></div>
+			<button class = "previewTTS">preview TTS</button>
 		</div>
 	</div>
-	<script src = "js/storyArray.js"></script>
+
+	<script src = "https://code.responsivevoice.org/responsivevoice.js"></script>
+	
+	<script src = "js/data.js"></script>
 	<script src = "js/actions.js"></script>
 </body>
 </html>

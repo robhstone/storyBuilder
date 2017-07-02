@@ -2,11 +2,25 @@
 
 * {
 	box-sizing: border-box;
-	font-family: 'Ubuntu', sans-serif;
 }
 
 body {
-	background-color: #A5A5B5;
+	background-color: #FCFCFF;
+}
+
+button {
+	width: 300px;
+	height: 80px;
+	border-radius: 40px;
+	text-align: center;
+	background-color: #00D4F0;
+	position: relative;
+	left: 50%;
+	transform:translateX(-50%);
+}
+
+.columnRight button {
+	margin-top: 20px;
 }
 
 .container {
@@ -18,8 +32,12 @@ body {
 .columnLeft, .columnRight{
 	width: 50%;
 	float: left;
-	background-color: #F2F2FF;
 	min-height: 100vh;
+}
+
+.columnRight {
+	position: fixed;
+	left: 50%;
 }
 
 .node {
@@ -45,6 +63,15 @@ body {
 
 .inputs h4 {
 	margin: 10px 0;
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
+.inputs textarea {
+	width: 300px;
+	margin: auto;
+	height: 200px;
 }
 
 .move, .add {
@@ -63,10 +90,11 @@ body {
 	width: 60px;
 	height: 60px;
 	border: 0;
+	border-radius: 0;
 }
 
 .move button {
-	background-color: lightgrey;
+	background-color: #EDEDED;
 }
 
 button.delete {
