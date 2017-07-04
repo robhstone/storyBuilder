@@ -23,17 +23,21 @@ function deleteNode(location) {
 	nodeList.removeChild(location);
 }
 
-// function moveNode(direction, reference) {
+function moveNode(direction, reference) {
 
-// 	var thisNodeInput = reference.querySelector('textarea').value;
-// 	var thatNodeInput = '';
+	var thisNodeInput = reference.querySelector('textarea');
+	var thatNodeInput = '';
 
-// 	if (direction === 'up') {
-// 		thatNodeInput = reference.previousSibling.querySelector('textarea').value;
-// 	} else {
-// 		thatNodeInput = 
-// 	}
-// }
+	if (direction === 'before') {
+		thatNodeInput = reference.previousSibling.querySelector('textarea');
+	} else {
+		thatNodeInput = reference.nextSibling.querySelector('textarea');
+	}
+
+	var save = thisNodeInput.value;
+	thisNodeInput.value = thatNodeInput.value;
+	thatNodeInput.value = save;
+}
 
 function playTTS() {
 	var nodeArray = nodeList.querySelectorAll('.node');
@@ -69,7 +73,13 @@ nodeList.addEventListener('click', (event) => {
 	} else if (event.target.className === 'delete'){
 		deleteNode(thisNode);
 		console.log('delete');
-	}	
+	} else if (event.target.className === 'moveNodeBefore'){
+		moveNode('before', thisNode);
+		console.log('moved');
+	} else if (event.target.className === 'moveNodeAfter'){
+		moveNode('after', thisNode);
+		console.log('moved');
+	}		
 });
 
 previewButton.addEventListener('click', () => {
